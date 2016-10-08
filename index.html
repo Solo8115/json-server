@@ -1,0 +1,499 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Json-server by Solo8115</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Json-server</h1>
+        <p class="header">Get a full fake REST API with zero coding in less than 30 seconds (seriously)</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/Solo8115/json-server/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/Solo8115/json-server/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/Solo8115/json-server">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/Solo8115">Solo8115</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="json-server---" class="anchor" href="#json-server---" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>JSON Server <a href="https://travis-ci.org/typicode/json-server"><img src="https://travis-ci.org/typicode/json-server.svg?branch=master" alt=""></a> <a href="http://badge.fury.io/js/json-server"><img src="https://badge.fury.io/js/json-server.svg" alt=""></a> <a href="https://gitter.im/typicode/json-server?utm_source=badge&amp;utm_medium=badge&amp;utm_campaign=pr-badge&amp;utm_content=badge"><img src="https://badges.gitter.im/Join%20Chat.svg" alt=""></a>
+</h1>
+
+<p>Get a full fake REST API with <strong>zero coding</strong> in <strong>less than 30 seconds</strong> (seriously)</p>
+
+<p>Created with &lt;3 for front-end developers who need a quick back-end for prototyping and mocking.</p>
+
+<ul>
+<li><a href="https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server">Egghead.io free video tutorial - Creating demo APIs with json-server</a></li>
+<li><a href="http://jsonplaceholder.typicode.com">JSONPlaceholder - Live running version</a></li>
+</ul>
+
+<p>See also:</p>
+
+<ul>
+<li>
+<g-emoji alias="hotel" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f3e8.png" ios-version="6.0">🏨</g-emoji> <a href="https://github.com/typicode/hotel">hotel - Get local domains in seconds</a>
+</li>
+<li>
+<g-emoji alias="dog" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f436.png" ios-version="6.0">🐶</g-emoji> <a href="https://github.com/typicode/husky">husky - Git hooks made easy</a>
+</li>
+</ul>
+
+<h2>
+<a id="example" class="anchor" href="#example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Example</h2>
+
+<p>Create a <code>db.json</code> file</p>
+
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>posts<span class="pl-pds">"</span></span>: [
+    { <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>, <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>json-server<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>author<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>typicode<span class="pl-pds">"</span></span> }
+  ],
+  <span class="pl-s"><span class="pl-pds">"</span>comments<span class="pl-pds">"</span></span>: [
+    { <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>, <span class="pl-s"><span class="pl-pds">"</span>body<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>some comment<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>postId<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span> }
+  ],
+  <span class="pl-s"><span class="pl-pds">"</span>profile<span class="pl-pds">"</span></span>: { <span class="pl-s"><span class="pl-pds">"</span>name<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>typicode<span class="pl-pds">"</span></span> }
+}</pre></div>
+
+<p>Start JSON Server</p>
+
+<div class="highlight highlight-source-shell"><pre>$ json-server --watch db.json</pre></div>
+
+<p>Now if you go to <a href="">http://localhost:3000/posts/1</a>, you'll get</p>
+
+<div class="highlight highlight-source-json"><pre>{ <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-c1">1</span>, <span class="pl-s"><span class="pl-pds">"</span>title<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>json-server<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>author<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>typicode<span class="pl-pds">"</span></span> }</pre></div>
+
+<p>Also when doing requests, its good to know that</p>
+
+<ul>
+<li>If you make POST, PUT, PATCH or DELETE requests, changes will be automatically and safely saved to <code>db.json</code> using <a href="https://github.com/typicode/lowdb">lowdb</a>.</li>
+<li>Your request body JSON should be object enclosed, just like the GET output. (for example <code>{"name": "Foobar"}</code>)</li>
+<li>Id values are not mutable. Any <code>id</code> value in the body of your PUT or PATCH request wil be ignored. Only a value set in a POST request wil be respected, but only if not already taken.</li>
+<li>A POST, PUT or PATCH request should include a <code>Content-Type: application/json</code> header to use the JSON in the request body. Otherwise it will result in a 200 OK but without changes being made to the data.</li>
+</ul>
+
+<h2>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h2>
+
+<div class="highlight highlight-source-shell"><pre>$ npm install -g json-server</pre></div>
+
+<h2>
+<a id="routes" class="anchor" href="#routes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Routes</h2>
+
+<p>Based on the previous <code>db.json</code> file, here are all the default routes. You can also add <a href="#add-routes">other routes</a> using <code>--routes</code>.</p>
+
+<h3>
+<a id="plural-routes" class="anchor" href="#plural-routes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Plural routes</h3>
+
+<pre><code>GET    /posts
+GET    /posts/1
+POST   /posts
+PUT    /posts/1
+PATCH  /posts/1
+DELETE /posts/1
+</code></pre>
+
+<h3>
+<a id="singular-routes" class="anchor" href="#singular-routes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Singular routes</h3>
+
+<pre><code>GET    /profile
+POST   /profile
+PUT    /profile
+PATCH  /profile
+</code></pre>
+
+<h3>
+<a id="filter" class="anchor" href="#filter" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Filter</h3>
+
+<p>Use <code>.</code> to access deep properties</p>
+
+<pre><code>GET /posts?title=json-server&amp;author=typicode
+GET /posts?id=1&amp;id=2
+GET /comments?author.name=typicode
+</code></pre>
+
+<h3>
+<a id="paginate" class="anchor" href="#paginate" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Paginate</h3>
+
+<p>Add <code>_page</code> and in the <code>Link</code> header you'll get <code>first</code>, <code>prev</code>, <code>next</code> and <code>last</code> links</p>
+
+<pre><code>GET /posts?_page=7
+</code></pre>
+
+<p><em>10 items are returned by default</em></p>
+
+<h3>
+<a id="sort" class="anchor" href="#sort" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Sort</h3>
+
+<p>Add <code>_sort</code> and <code>_order</code> (ascending order by default)</p>
+
+<pre><code>GET /posts?_sort=views&amp;_order=DESC
+GET /posts/1/comments?_sort=votes&amp;_order=ASC
+</code></pre>
+
+<h3>
+<a id="slice" class="anchor" href="#slice" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Slice</h3>
+
+<p>Add <code>_start</code> and <code>_end</code> or <code>_limit</code> (an <code>X-Total-Count</code> header is included in the response)</p>
+
+<pre><code>GET /posts?_start=20&amp;_end=30
+GET /posts/1/comments?_start=20&amp;_end=30
+GET /posts/1/comments?_start=20&amp;_limit=10
+</code></pre>
+
+<h3>
+<a id="operators" class="anchor" href="#operators" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Operators</h3>
+
+<p>Add <code>_gte</code> or <code>_lte</code> for getting a range</p>
+
+<pre><code>GET /posts?views_gte=10&amp;views_lte=20
+</code></pre>
+
+<p>Add <code>_ne</code> to exclude a value</p>
+
+<pre><code>GET /posts?id_ne=1
+</code></pre>
+
+<p>Add <code>_like</code> to filter (RegExp supported)</p>
+
+<pre><code>GET /posts?title_like=server
+</code></pre>
+
+<h3>
+<a id="full-text-search" class="anchor" href="#full-text-search" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Full-text search</h3>
+
+<p>Add <code>q</code></p>
+
+<pre><code>GET /posts?q=internet
+</code></pre>
+
+<h3>
+<a id="relationships" class="anchor" href="#relationships" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Relationships</h3>
+
+<p>To include children resources, add <code>_embed</code></p>
+
+<pre><code>GET /posts?_embed=comments
+GET /posts/1?_embed=comments
+</code></pre>
+
+<p>To include parent resource, add <code>_expand</code></p>
+
+<pre><code>GET /comments?_expand=post
+GET /comments/1?_expand=post
+</code></pre>
+
+<p>To get or create nested resources (by default one level, <a href="#add-routes">add routes</a> for more)</p>
+
+<pre><code>GET  /posts/1/comments
+POST /posts/1/comments
+</code></pre>
+
+<h3>
+<a id="database" class="anchor" href="#database" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Database</h3>
+
+<pre><code>GET /db
+</code></pre>
+
+<h3>
+<a id="homepage" class="anchor" href="#homepage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Homepage</h3>
+
+<p>Returns default index file or serves <code>./public</code> directory</p>
+
+<pre><code>GET /
+</code></pre>
+
+<h2>
+<a id="extras" class="anchor" href="#extras" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Extras</h2>
+
+<h3>
+<a id="static-file-server" class="anchor" href="#static-file-server" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Static file server</h3>
+
+<p>You can use JSON Server to serve your HTML, JS and CSS, simply create a <code>./public</code> directory
+or use <code>--static</code> to set a different static files directory.</p>
+
+<div class="highlight highlight-source-shell"><pre>mkdir public
+<span class="pl-c1">echo</span> <span class="pl-s"><span class="pl-pds">'</span>hello world<span class="pl-pds">'</span></span> <span class="pl-k">&gt;</span> public/index.html
+json-server db.json</pre></div>
+
+<div class="highlight highlight-source-shell"><pre>json-server db.json --static ./some-other-dir</pre></div>
+
+<h3>
+<a id="alternative-port" class="anchor" href="#alternative-port" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Alternative port</h3>
+
+<p>You can start JSON Server on other ports with the <code>--port</code> flag:</p>
+
+<div class="highlight highlight-source-shell"><pre>$ json-server --watch db.json --port 3004</pre></div>
+
+<h3>
+<a id="access-from-anywhere" class="anchor" href="#access-from-anywhere" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Access from anywhere</h3>
+
+<p>You can access your fake API from anywhere using CORS and JSONP.</p>
+
+<h3>
+<a id="remote-schema" class="anchor" href="#remote-schema" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Remote schema</h3>
+
+<p>You can load remote schemas.</p>
+
+<div class="highlight highlight-source-shell"><pre>$ json-server http://example.com/file.json
+$ json-server http://jsonplaceholder.typicode.com/db</pre></div>
+
+<h3>
+<a id="generate-random-data" class="anchor" href="#generate-random-data" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Generate random data</h3>
+
+<p>Using JS instead of a JSON file, you can create data programmatically.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// index.js</span>
+<span class="pl-c1">module</span>.<span class="pl-en">exports</span> <span class="pl-k">=</span> <span class="pl-k">function</span>() {
+  <span class="pl-k">var</span> data <span class="pl-k">=</span> { users<span class="pl-k">:</span> [] }
+  <span class="pl-c">// Create 1000 users</span>
+  <span class="pl-k">for</span> (<span class="pl-k">var</span> i <span class="pl-k">=</span> <span class="pl-c1">0</span>; i <span class="pl-k">&lt;</span> <span class="pl-c1">1000</span>; i<span class="pl-k">++</span>) {
+    <span class="pl-smi">data</span>.<span class="pl-smi">users</span>.<span class="pl-c1">push</span>({ id<span class="pl-k">:</span> i, name<span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>user<span class="pl-pds">'</span></span> <span class="pl-k">+</span> i })
+  }
+  <span class="pl-k">return</span> data
+}</pre></div>
+
+<div class="highlight highlight-source-shell"><pre>$ json-server index.js</pre></div>
+
+<p><strong>Tip</strong> use modules like <a href="https://github.com/Marak/faker.js">faker</a>, <a href="https://github.com/boo1ean/casual">casual</a> or <a href="https://github.com/victorquinn/chancejs">chance</a>.</p>
+
+<h3>
+<a id="add-routes" class="anchor" href="#add-routes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add routes</h3>
+
+<p>Create a <code>routes.json</code> file. Pay attention to start every route with /.</p>
+
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>/api/<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>/<span class="pl-pds">"</span></span>,
+  <span class="pl-s"><span class="pl-pds">"</span>/blog/:resource/:id/show<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>/:resource/:id<span class="pl-pds">"</span></span>
+}</pre></div>
+
+<p>Start JSON Server with <code>--routes</code> option.</p>
+
+<div class="highlight highlight-source-shell"><pre>json-server db.json --routes routes.json</pre></div>
+
+<p>Now you can access resources using additional routes.</p>
+
+<div class="highlight highlight-source-shell"><pre>/api/posts
+/api/posts/1
+/blog/posts/1/show</pre></div>
+
+<h3>
+<a id="add-middlewares" class="anchor" href="#add-middlewares" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Add middlewares</h3>
+
+<p>You can add your middlewares from the CLI using <code>--middlewares</code> option:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// first.js</span>
+<span class="pl-c1">module</span>.<span class="pl-en">exports</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">next</span>) {
+  <span class="pl-smi">res</span>.<span class="pl-en">Header</span>(<span class="pl-s"><span class="pl-pds">'</span>X-Hello<span class="pl-pds">'</span></span>, <span class="pl-s"><span class="pl-pds">'</span>World<span class="pl-pds">'</span></span>)
+}</pre></div>
+
+<div class="highlight highlight-source-shell"><pre>json-server db.json --middlewares ./hello.js
+json-server db.json --middlewares ./first.js ./second.js</pre></div>
+
+<h3>
+<a id="cli-usage" class="anchor" href="#cli-usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>CLI usage</h3>
+
+<pre><code>json-server [options] &lt;source&gt;
+
+Options:
+  --config, -c       Path to config file           [default: "json-server.json"]
+  --port, -p         Set port                                    [default: 3000]
+  --host, -H         Set host                               [default: "0.0.0.0"]
+  --watch, -w        Watch file(s)                                     [boolean]
+  --routes, -r       Path to routes file
+  --middlewares, -m  Paths to middleware files                           [array]
+  --static, -s       Set static files directory
+  --read-only, --ro  Allow only GET requests                           [boolean]
+  --no-cors, --nc    Disable Cross-Origin Resource Sharing             [boolean]
+  --no-gzip, --ng    Disable GZIP Content-Encoding                     [boolean]
+  --snapshots, -S    Set snapshots directory                      [default: "."]
+  --delay, -d        Add delay to responses (ms)
+  --id, -i           Set database id property (e.g. _id)         [default: "id"]
+  --quiet, -q        Suppress log messages from output                 [boolean]
+  --help, -h         Show help                                         [boolean]
+  --version, -v      Show version number                               [boolean]
+
+Examples:
+  json-server db.json
+  json-server file.js
+  json-server http://example.com/db.json
+
+https://github.com/typicode/json-server
+</code></pre>
+
+<p>You can also set options in a <code>json-server.json</code> configuration file.</p>
+
+<div class="highlight highlight-source-json"><pre>{
+  <span class="pl-s"><span class="pl-pds">"</span>port<span class="pl-pds">"</span></span>: <span class="pl-c1">3000</span>
+}</pre></div>
+
+<h3>
+<a id="module" class="anchor" href="#module" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Module</h3>
+
+<p>If you need to add authentication, validation, or <strong>any behavior</strong>, you can use the project as a module in combination with other Express middlewares.</p>
+
+<h4>
+<a id="simple-example" class="anchor" href="#simple-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple example</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// server.js</span>
+<span class="pl-k">var</span> jsonServer <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>json-server<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> server <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">create</span>()
+<span class="pl-k">var</span> router <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">router</span>(<span class="pl-s"><span class="pl-pds">'</span>db.json<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> middlewares <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">defaults</span>()
+
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(middlewares)
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(router)
+<span class="pl-smi">server</span>.<span class="pl-en">listen</span>(<span class="pl-c1">3000</span>, <span class="pl-k">function</span> () {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>JSON Server is running<span class="pl-pds">'</span></span>)
+})</pre></div>
+
+<div class="highlight highlight-source-shell"><pre>$ node server.js</pre></div>
+
+<p>For an in-memory database, you can pass an object to <code>jsonServer.router()</code>.
+Please note also that <code>jsonServer.router()</code> can be used in existing Express projects.</p>
+
+<h4>
+<a id="custom-routes-example" class="anchor" href="#custom-routes-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom routes example</h4>
+
+<p>Let's say you want a route that echoes query parameters and another one that set a timestamp on every resource created.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> jsonServer <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>json-server<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> server <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">create</span>()
+<span class="pl-k">var</span> router <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">router</span>(<span class="pl-s"><span class="pl-pds">'</span>db.json<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> middlewares <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">defaults</span>()
+
+<span class="pl-c">// Set default middlewares (logger, static, cors and no-cache)</span>
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(middlewares)
+
+<span class="pl-c">// Add custom routes before JSON Server router</span>
+<span class="pl-smi">server</span>.<span class="pl-c1">get</span>(<span class="pl-s"><span class="pl-pds">'</span>/echo<span class="pl-pds">'</span></span>, <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) {
+  <span class="pl-smi">res</span>.<span class="pl-en">jsonp</span>(<span class="pl-smi">req</span>.<span class="pl-smi">query</span>)
+})
+
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(<span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">next</span>) {
+  <span class="pl-k">if</span> (<span class="pl-smi">req</span>.<span class="pl-c1">method</span> <span class="pl-k">===</span> <span class="pl-s"><span class="pl-pds">'</span>POST<span class="pl-pds">'</span></span>) {
+    <span class="pl-smi">req</span>.<span class="pl-c1">body</span>.<span class="pl-smi">createdAt</span> <span class="pl-k">=</span> <span class="pl-c1">Date</span>.<span class="pl-en">now</span>()
+  }
+  <span class="pl-c">// Continue to JSON Server router</span>
+  <span class="pl-en">next</span>()
+})
+
+<span class="pl-c">// Use default router</span>
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(router)
+<span class="pl-smi">server</span>.<span class="pl-en">listen</span>(<span class="pl-c1">3000</span>, <span class="pl-k">function</span> () {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>JSON Server is running<span class="pl-pds">'</span></span>)
+})</pre></div>
+
+<h4>
+<a id="access-control-example" class="anchor" href="#access-control-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Access control example</h4>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-k">var</span> jsonServer <span class="pl-k">=</span> <span class="pl-c1">require</span>(<span class="pl-s"><span class="pl-pds">'</span>json-server<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> server <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">create</span>()
+<span class="pl-k">var</span> router <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">router</span>(<span class="pl-s"><span class="pl-pds">'</span>db.json<span class="pl-pds">'</span></span>)
+<span class="pl-k">var</span> middlewares <span class="pl-k">=</span> <span class="pl-smi">jsonServer</span>.<span class="pl-en">defaults</span>()
+
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(middlewares)
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(<span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>, <span class="pl-smi">next</span>) {
+ <span class="pl-k">if</span> (<span class="pl-en">isAuthorized</span>(req)) { <span class="pl-c">// add your authorization logic here</span>
+   <span class="pl-en">next</span>() <span class="pl-c">// continue to JSON Server router</span>
+ } <span class="pl-k">else</span> {
+   <span class="pl-smi">res</span>.<span class="pl-en">sendStatus</span>(<span class="pl-c1">401</span>)
+ }
+})
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(router)
+<span class="pl-smi">server</span>.<span class="pl-en">listen</span>(<span class="pl-c1">3000</span>, <span class="pl-k">function</span> () {
+  <span class="pl-en">console</span>.<span class="pl-c1">log</span>(<span class="pl-s"><span class="pl-pds">'</span>JSON Server is running<span class="pl-pds">'</span></span>)
+})</pre></div>
+
+<h4>
+<a id="custom-output-example" class="anchor" href="#custom-output-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Custom output example</h4>
+
+<p>To modify responses, overwrite <code>router.render</code> method:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// In this example, returned resources will be wrapped in a body property</span>
+<span class="pl-smi">router</span>.<span class="pl-en">render</span> <span class="pl-k">=</span> <span class="pl-k">function</span> (<span class="pl-smi">req</span>, <span class="pl-smi">res</span>) {
+  <span class="pl-smi">res</span>.<span class="pl-en">jsonp</span>({
+   body<span class="pl-k">:</span> <span class="pl-smi">res</span>.<span class="pl-smi">locals</span>.<span class="pl-c1">data</span>
+  })
+}</pre></div>
+
+<h4>
+<a id="rewriter-example" class="anchor" href="#rewriter-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Rewriter example</h4>
+
+<p>To add rewrite rules, use <code>jsonServer.rewriter()</code>:</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-c">// Add this before server.use(router)</span>
+<span class="pl-smi">server</span>.<span class="pl-en">use</span>(<span class="pl-smi">jsonServer</span>.<span class="pl-en">rewriter</span>({
+  <span class="pl-s"><span class="pl-pds">'</span>/api/<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/<span class="pl-pds">'</span></span>,
+  <span class="pl-s"><span class="pl-pds">'</span>/blog/:resource/:id/show<span class="pl-pds">'</span></span><span class="pl-k">:</span> <span class="pl-s"><span class="pl-pds">'</span>/:resource/:id<span class="pl-pds">'</span></span>
+}))</pre></div>
+
+<h4>
+<a id="mounting-json-server-on-another-endpoint-example" class="anchor" href="#mounting-json-server-on-another-endpoint-example" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mounting JSON Server on another endpoint example</h4>
+
+<p>Alternatively, you can also mount the router on <code>/api</code>.</p>
+
+<div class="highlight highlight-source-js"><pre><span class="pl-smi">server</span>.<span class="pl-en">use</span>(<span class="pl-s"><span class="pl-pds">'</span>/api<span class="pl-pds">'</span></span>, router)</pre></div>
+
+<h3>
+<a id="deployment" class="anchor" href="#deployment" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Deployment</h3>
+
+<p>You can deploy JSON Server. For example, <a href="http://jsonplaceholder.typicode.com">JSONPlaceholder</a> is an online fake API powered by JSON Server and running on Heroku.</p>
+
+<h2>
+<a id="links" class="anchor" href="#links" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Links</h2>
+
+<h3>
+<a id="video" class="anchor" href="#video" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Video</h3>
+
+<ul>
+<li><a href="https://egghead.io/lessons/nodejs-creating-demo-apis-with-json-server">Creating Demo APIs with json-server on egghead.io</a></li>
+</ul>
+
+<h3>
+<a id="articles" class="anchor" href="#articles" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Articles</h3>
+
+<ul>
+<li><a href="http://nmotw.in/json-server/">Node Module Of The Week - json-server</a></li>
+<li><a href="http://www.betterpixels.co.uk/projects/2015/05/09/mock-up-your-rest-api-with-json-server/">Mock up your REST API with JSON Server</a></li>
+<li><a href="http://marmelab.com/blog/2014/09/15/easy-backend-for-your-restful-api.html">ng-admin: Add an AngularJS admin GUI to any RESTful API</a></li>
+<li><a href="http://glebbahmutov.com/blog/fast-prototyping-using-restangular-and-json-server/">Fast prototyping using Restangular and Json-server</a></li>
+<li><a href="https://coligo.io/create-mock-rest-api-with-json-server/">Create a Mock REST API in Seconds for Prototyping your Frontend</a></li>
+</ul>
+
+<h3>
+<a id="third-party-tools" class="anchor" href="#third-party-tools" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Third-party tools</h3>
+
+<ul>
+<li><a href="https://github.com/tfiwm/grunt-json-server">Grunt JSON Server</a></li>
+<li><a href="https://github.com/clue/docker-json-server">Docker JSON Server</a></li>
+<li><a href="https://github.com/naholyr/json-server-gui">JSON Server GUI</a></li>
+<li><a href="https://github.com/dfsq/json-server-init">JSON file generator</a></li>
+</ul>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h2>
+
+<p>MIT - <a href="https://github.com/typicode">Typicode</a></p>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
